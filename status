@@ -1,0 +1,29 @@
+#! /bin/sh
+
+work() {
+    reply="sed -e 's/^/> /'"
+    mail="vash@vash2593.com"
+
+    mutt -d5 -s "[sys] $(hostname)" "$mail"<<.
+Hi, folks,
+
+This is an automated mail to show you my state:
+
+my name is $(hostname).
+
+my current uptime is:
+`uptime | eval $reply`
+
+my users are:
+`users | eval $reply`
+
+My disks state is:
+`df -h | eval $reply`
+
+glhf,
+--
+`hostname`
+.
+}
+
+work
